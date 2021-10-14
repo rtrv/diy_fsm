@@ -1,27 +1,12 @@
-name: Ruby
-
-on:
-  push:
-    branches:
-      - master
-
-  pull_request:
-
+name: CI
+on: [push, pull_request]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        ruby:
-          - 2.7
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby }}
+        ruby-version: 2.7.2
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+    - run: bundle exec rake
