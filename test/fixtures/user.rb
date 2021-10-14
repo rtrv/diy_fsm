@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../../lib/diy_fsm"
+
 class User
   include DiyFsm
 
@@ -9,16 +11,16 @@ class User
     state :blocked, initial: true
     state :moderating
 
-    event :moderate do
-      transition from: :blocked, to: :moderating
-    end
+    # event :moderate do
+    #   transition from: :blocked, to: :moderating
+    # end
 
-    event :block do
-      transition from: :unblocked, to: :blocked
-    end
+    # event :block do
+    #   transition from: :unblocked, to: :blocked
+    # end
 
-    event :unblock do
-      transition from: :moderating, to: :unblocked
-    end
+    # event :unblock do
+    #   transition from: :moderating, to: :unblocked
+    # end
   end
 end

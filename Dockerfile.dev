@@ -1,1 +1,10 @@
-# TODO!
+FROM ruby:2.7.4-slim-buster
+
+ENV RAILS_ENV development
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY . /app
+
+RUN bundle install
